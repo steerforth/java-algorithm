@@ -3,6 +3,9 @@ package com.steer.algorithm.binaryTree.avl;
 import com.steer.algorithm.binaryTree.Node;
 import com.steer.algorithm.binaryTree.TreeUtil;
 
+/**
+ * https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
+ */
 public class AVLTree {
     Node root;
     //二叉树的高度
@@ -73,7 +76,7 @@ public class AVLTree {
     private Node getRRBalance(Node root) {
         Node newRoot = root.getRight();
         root.setRight(newRoot.getLeft());
-        newRoot.setLeft(newRoot);
+        newRoot.setLeft(root);
         return newRoot;
     }
 
@@ -90,7 +93,7 @@ public class AVLTree {
     private Node getLLBalance(Node root) {
         Node newRoot = root.getLeft();
         root.setLeft(newRoot.getRight());
-        newRoot.setRight(newRoot);
+        newRoot.setRight(root);
         return newRoot;
     }
 
