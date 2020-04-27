@@ -46,7 +46,7 @@ public class TestA {
 
     private static void desSortAndPrint(Map<String, Integer> container) {
         container.entrySet().stream().sorted((a,b)->{
-            if (a.getValue() == b.getValue()){
+            if (a.getValue().equals(b.getValue())){
                 return b.getKey().compareTo(a.getKey());
             }else{
                 return b.getValue().compareTo(a.getValue());

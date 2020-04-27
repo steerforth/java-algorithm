@@ -1,4 +1,4 @@
-package com.steer.algorithm.merge;
+package com.steer.algorithm.interview;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.Random;
  * 有1亿行的一个大文件
  * 怎么快速找出并打印最大的10个数字
  */
-public class MergeTest {
+public class BigMergeTest {
 
     static class Entry implements Comparable<Entry> {
         //数值
@@ -26,7 +26,8 @@ public class MergeTest {
             this.value = value;
             this.index = index;
         }
-        //倒序
+
+        @Override
         public int compareTo(Entry other) {
             if (other.value == value){
                 return 0;
@@ -70,7 +71,8 @@ public class MergeTest {
         File file = new File(filePath);
         //定义10万行一个文件  1000个文件
         final int SIZE = 100000;
-        long[] nums = new long[SIZE];//临时存放数据
+        //临时存放数据
+        long[] nums = new long[SIZE];
         List<String> fileNames = new ArrayList<>(1000);
         try (BufferedReader fr = new BufferedReader(new FileReader(file))){
             int index=0;
@@ -99,7 +101,9 @@ public class MergeTest {
         File file=new File(filePath);
         int numCount = 10000000;
         Random r=new Random();
-        if(file.exists())file.delete();
+        if(file.exists()){
+            file.delete();
+        }
         try(FileWriter fw=new FileWriter(file)) {
             for(int i=0;i<numCount;i++) {
                 fw.write(r.nextLong() + "\n");
