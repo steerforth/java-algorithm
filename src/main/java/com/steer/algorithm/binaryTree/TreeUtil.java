@@ -2,10 +2,11 @@ package com.steer.algorithm.binaryTree;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class TreeUtil {
     /**
-     * 中序遍历
+     * 中序遍历(递归)
      * @param node
      */
     public static void traverseInOrder(Node node){
@@ -13,6 +14,25 @@ public class TreeUtil {
             traverseInOrder(node.getLeft());
             System.out.print(node.getData()+"\t");
             traverseInOrder(node.getRight());
+        }
+    }
+
+    /**
+     * 左-根-右
+     * 中序遍历(迭代)
+     * @param node
+     */
+    public static void traverseInOrderByIteration(Node node){
+        Stack<Node> stack = new Stack<>();
+        Node cur = node;
+        while (cur != null || !stack.isEmpty()){
+            while (cur != null){
+                stack.push(cur);
+                cur = cur.getLeft();
+            }
+            cur = stack.pop();
+            System.out.print(cur.getData()+"\t");
+            cur = cur.getRight();
         }
     }
 
@@ -29,6 +49,25 @@ public class TreeUtil {
     }
 
     /**
+     * 根-左-右
+     * 前序遍历(迭代)
+     * @param node
+     */
+    public static void traversePreOrderByIteration(Node node){
+        Stack<Node> stack = new Stack<>();
+        Node cur = node;
+        while (cur != null || !stack.isEmpty()){
+            while (cur != null){
+                System.out.print(cur.getData()+"\t");
+                stack.push(cur);
+                cur = cur.getLeft();
+            }
+            cur = stack.pop();
+            cur = cur.getRight();
+        }
+    }
+
+    /**
      * 后序遍历
      * @param node
      */
@@ -38,6 +77,26 @@ public class TreeUtil {
             traversePostOrder(node.getRight());
             System.out.print(node.getData()+"\t");
         }
+    }
+
+    /**
+     * 左-右-根
+     * 后序遍历(迭代)
+     * @param node
+     */
+    public static void traversePostOrderByIteration(Node node){
+        Node cur = node;
+//        Stack<Node> stack = new Stack<>();
+//        Node cur = node;
+//        while (cur != null || !stack.isEmpty()){
+//            while (cur != null){
+//                stack.push(cur);
+//                cur = cur.getLeft();
+//            }
+//            cur = stack.pop();
+//            System.out.print(cur.getData()+"\t");
+//            cur = cur.getRight();
+//        }
     }
 
     /**

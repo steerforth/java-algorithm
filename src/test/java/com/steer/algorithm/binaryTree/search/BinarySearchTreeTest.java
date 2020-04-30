@@ -36,19 +36,35 @@ public class BinarySearchTreeTest {
         tree.addNode(90);
 
         tree.deleteNode(50);
-        System.out.println("=====中序遍历=====");
+        System.out.println("=====中序遍历 递归法=====");
         TreeUtil.traverseInOrder(tree.getRoot());
+
+        System.out.println("");
+        System.out.println("=====中序遍历 迭代法=====");
+        TreeUtil.traverseInOrderByIteration(tree.getRoot());
+
         System.out.println("");
         System.out.println("=====前序遍历=====");
         TreeUtil.traversePreOrder(tree.getRoot());
+
+        System.out.println("");
+        System.out.println("=====中序遍历 迭代法=====");
+        TreeUtil.traversePreOrderByIteration(tree.getRoot());
+
         System.out.println("");
         System.out.println("=====后序遍历=====");
         TreeUtil.traversePostOrder(tree.getRoot());
+
+        System.out.println("");
+        System.out.println("=====后序遍历 迭代法=====");
+        TreeUtil.traversePostOrderByIteration(tree.getRoot());
+
         System.out.println("");
         System.out.println("=====层次遍历=====");
         TreeUtil.traverseLevelOrder(tree.getRoot());
 
         int height = TreeUtil.getChildDepth(tree.getRoot());
+        System.out.println("");
         System.out.println("树高:"+height);
     }
 }

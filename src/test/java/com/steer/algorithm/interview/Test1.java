@@ -5,21 +5,22 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 输入：n = 3
+ * 输出：[
+ *        "((()))",
+ *        "(()())",
+ *        "(())()",
+ *        "()(())",
+ *        "()()()"
+ *      ]
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/generate-parentheses
+ */
 public class Test1 {
 
-    /**
-     * 输入：n = 3
-     * 输出：[
-     *        "((()))",
-     *        "(()())",
-     *        "(())()",
-     *        "()(())",
-     *        "()()()"
-     *      ]
-     *
-     * 来源：力扣（LeetCode）
-     * 链接：https://leetcode-cn.com/problems/generate-parentheses
-     */
+
     @Test
     public void test(){
         int n = 4;
