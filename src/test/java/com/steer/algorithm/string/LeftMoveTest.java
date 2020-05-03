@@ -1,5 +1,6 @@
 package com.steer.algorithm.string;
 
+import com.steer.algorithm.util.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -22,22 +23,14 @@ public class LeftMoveTest {
         char[] origin = new char[]{'a','b','c','d','e','f'};
         int size = 2;
 
-        reverseString(origin,0,size-1);
-        reverseString(origin,size,origin.length-1);
-        reverseString(origin,0,origin.length-1);
+        StringUtils.reverseString(origin,0,size-1);
+        StringUtils.reverseString(origin,size,origin.length-1);
+        StringUtils.reverseString(origin,0,origin.length-1);
 
         System.out.println(Arrays.toString(origin));
 
     }
 
-    private void reverseString(char[] chars,int from, int to){
-        while (from < to){
-            char temp = chars[from];
-            chars[from] = chars[to];
-            chars[to] = temp;
-            to--;
-            from++;
-        }
-    }
+
 
 }
