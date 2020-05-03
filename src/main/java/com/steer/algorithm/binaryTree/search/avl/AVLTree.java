@@ -1,6 +1,7 @@
-package com.steer.algorithm.binaryTree.avl;
+package com.steer.algorithm.binaryTree.search.avl;
 
 import com.steer.algorithm.binaryTree.Node;
+import com.steer.algorithm.binaryTree.SearchTreeUtil;
 import com.steer.algorithm.binaryTree.TreeUtil;
 
 /**
@@ -32,7 +33,8 @@ public class AVLTree {
     }
 
     public Node addNode(int value){
-        return addNode(root,value);
+        Node node = addNode(root, value);
+        return balance(node);
     }
 
     /**
@@ -49,8 +51,50 @@ public class AVLTree {
             current.setLeft(addNode(current.getLeft(),value));
         }else if (value > current.getData()){
             current.setRight(addNode(current.getRight(),value));
+        }else{
+            return current;
         }
-        return balance(current);
+        return current;
+    }
+
+    public Node deleteNode(int value){
+        Node node = deleteNode(root,value);
+        return balance(node);
+    }
+
+    private Node deleteNode(Node current, int value) {
+        if (current == null){
+            return null;
+        }
+        if (value == current.getData()){
+            /**
+             * 下面3个if 用于返回递归上一次层
+             */
+            //情况1:删除的节点为叶子节点
+            if (current.getLeft() == null && current.getRight() == null){
+                return null;
+            }
+            //情况2:删除的节点为单节点
+            if (current.getLeft() == null){
+                return current.getRight();
+            }
+            if (current.getRight() == null){
+                return current.getLeft();
+            }
+            //情况3:删除的节点左右都有节点。找该节点的右子树的最小值，替换，然后删除该右子树最小值的节点
+            int smallestValue = SearchTreeUtil.findSmallestValue(current.getRight());
+            current.setData(smallestValue);
+            current.setRight(deleteNode(current.getRight(), smallestValue));
+            return current;
+        }
+
+        if (value < current.getData()){
+            current.setLeft(deleteNode(current.getLeft(),value));
+            return current;
+        }
+
+        current.setRight(deleteNode(current.getRight(),value));
+        return current;
     }
 
     private Node balance(Node current) {

@@ -1,10 +1,16 @@
-package com.steer.algorithm.binaryTree.avl;
+package com.steer.algorithm.binaryTree.search.avl;
 
 import com.steer.algorithm.binaryTree.Node;
 import com.steer.algorithm.binaryTree.TreeUtil;
 import org.junit.jupiter.api.Test;
 
 public class AVLTreeTest {
+    /**
+     *             6           ->  *             3
+     *        3        7       ->  *      1            6
+     *    1      4             ->  *         2      4     7
+     *      2                  ->  *
+     */
     @Test
     public void testLL(){
         AVLTree avlTree = new AVLTree(new Node(6));

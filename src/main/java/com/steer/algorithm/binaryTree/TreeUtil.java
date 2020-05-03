@@ -82,21 +82,25 @@ public class TreeUtil {
     /**
      * 左-右-根
      * 后序遍历(迭代)
-     * @param node
+     * @param root
      */
-    public static void traversePostOrderByIteration(Node node){
-        Node cur = node;
-//        Stack<Node> stack = new Stack<>();
-//        Node cur = node;
-//        while (cur != null || !stack.isEmpty()){
-//            while (cur != null){
-//                stack.push(cur);
-//                cur = cur.getLeft();
-//            }
-//            cur = stack.pop();
-//            System.out.print(cur.getData()+"\t");
-//            cur = cur.getRight();
-//        }
+    public static void traversePostOrderByIteration(Node root){
+        Stack<Node> stack = new Stack<>();
+        Stack<Node> store = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node pop = stack.pop();
+            store.push(pop);
+            if (pop.getLeft() != null){
+                stack.push(pop.getLeft());
+            }
+            if (pop.getRight() != null){
+                stack.push(pop.getRight());
+            }
+        }
+        while (!store.isEmpty()){
+            System.out.print(store.pop().getData()+"\t");
+        }
     }
 
     /**
@@ -131,7 +135,7 @@ public class TreeUtil {
         if(node == null) {
             return 0;
         }
-        return 1 + Math.max(getChildDepth(node.getLeft()), getChildDepth(node.getRight()));
+        return 1+Math.max(getChildDepth(node.getLeft()), getChildDepth(node.getRight()));
     }
 
     /**

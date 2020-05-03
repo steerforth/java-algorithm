@@ -1,6 +1,7 @@
 package com.steer.algorithm.binaryTree.search;
 
 import com.steer.algorithm.binaryTree.Node;
+import com.steer.algorithm.binaryTree.SearchTreeUtil;
 
 /**
  * 二叉搜索树/排序树
@@ -69,6 +70,10 @@ public class BinarySearchTree {
      * 去删除节点的右子树中寻找最小的节点来代替删除节点的位置
      *
      * (可以使用中序遍历中的该删除节点前驱或者后继节点来代替该位置)
+     *
+     * 1.删除的为叶子节点:直接删除，并且把父节点的指向设置为Null
+     * 2.删除的节点为单支节点:父节点指向该节点的子树
+     * 3.删除的节点为双支节点:查找右子树的最小节点(肯定是叶子节点或单支节点)，替换；然后那个最小节点的父节点指向该节点的子树
      * @param current
      * @param value
      * @return
@@ -81,18 +86,19 @@ public class BinarySearchTree {
             /**
              * 下面3个if 用于返回递归上一次层
              */
-            //判断子节点
+            //情况1:删除的节点为叶子节点
             if (current.getLeft() == null && current.getRight() == null){
                 return null;
             }
+            //情况2:删除的节点为单节点
             if (current.getLeft() == null){
                 return current.getRight();
             }
             if (current.getRight() == null){
                 return current.getLeft();
             }
-            //查找右子树最小的值
-            int smallestValue = findSmallestValue(current.getRight());
+            //情况3:删除的节点左右都有节点。找该节点的右子树的最小值，替换，然后删除该右子树最小值的节点
+            int smallestValue = SearchTreeUtil.findSmallestValue(current.getRight());
             current.setData(smallestValue);
             current.setRight(deleteNode(current.getRight(), smallestValue));
             return current;
@@ -105,10 +111,6 @@ public class BinarySearchTree {
 
         current.setRight(deleteNode(current.getRight(),value));
         return current;
-    }
-
-    private int findSmallestValue(Node node) {
-        return node.getRight() == null ? node.getData() : findSmallestValue(node.getLeft());
     }
 
 }
