@@ -1,4 +1,4 @@
-package com.steer.algorithm.binaryTree.search;
+package com.steer.algorithm.binaryTree;
 
 import com.steer.algorithm.binaryTree.Node;
 import com.steer.algorithm.binaryTree.TreeUtil;
