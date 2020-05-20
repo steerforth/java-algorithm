@@ -15,7 +15,7 @@ public class BinarySearch {
     public static int binarySearch(int[] arr, int searchValue) {
         int max = arr.length;
         int min = 0;
-        int mid = (max+min)/2;
+        int mid =  min + ((max-min)>>1);
 
         while (arr[mid] != searchValue){
             if (arr[mid] > searchValue){
@@ -28,7 +28,7 @@ public class BinarySearch {
                 return -1;
             }
 
-            mid = (max + min)/2;
+            mid = min + ((max-min)>>1);
         }
 
         return mid;
