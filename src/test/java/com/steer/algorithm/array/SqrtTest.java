@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 /**
  * 求一个数的开平方
+ * 要求精确到小数点后6位
  */
 public class SqrtTest {
     @Test
@@ -16,9 +17,12 @@ public class SqrtTest {
 
         double xx = squareRoot(5);
 
-//        double xxx = mySqrt(5);
-        System.out.println(a+ "     "+ x +"    "+xx+"    ");
-//        System.out.println(a+ "     "+ x +"    "+xx+"    "+xxx);
+        double xxx = newtonSqrt(5);
+
+        System.out.println("Math.sqrt:"+a);
+        System.out.println("二分法1:"+x);
+        System.out.println("二分法2:"+xx);
+        System.out.println("牛顿法:"+xxx);
     }
 
     /**
@@ -34,7 +38,7 @@ public class SqrtTest {
         double high = data;
         double mid = 0.0;
         while(isNumOfDigLessThenInput(mid, 6) ){
-            mid = low + ((high - low) / 2);
+            mid = low + (high - low) / 2;
             if(data == mid*mid){
                 return mid;
             }else if(data < mid*mid){
@@ -65,8 +69,8 @@ public class SqrtTest {
         double x = 0;
         double low = 0;
         double high = a;
-        while(low<=high){
-            x = (low+high)/2;
+        while(low <= high){
+            x = low + (high - low) / 2;
             if(x>a/x){
                 high = x-0.000001;
             }
@@ -75,7 +79,7 @@ public class SqrtTest {
                 low = x+0.000001;
             }
             if(x==a/x){
-                //刚好整除
+                //刚好整除??? 这里只是为了精度？？
                 return x+0.000001;
             }
         }
@@ -84,10 +88,25 @@ public class SqrtTest {
     }
 
 
-    public double mySqrt(int a) {
+    //牛顿法
+
+    /**
+     *
+     * 求x^2-a =f(x)曲线与x轴正向的交点。用切点直线不断逼近的办法求解。
+     *
+     * 已知 f'(x) = 2x;
+     * 在X1点处的切线为f(x)-f(x1)=f'(x1)(x - x1)
+     * 与x轴的交点为(即f(x)=0)： x = (x1^2+a)/(2*x1)--> x =(x1+a/x1)/2
+     *
+     * @param a
+     * @return
+     */
+    public double newtonSqrt(int a) {
         double x = a;
-        while (x * x > a) {
-            x = (x + a / x) / 2;
+        //精度
+        double p = 1e-6;
+        while ((x * x- a) > p) {
+            x = (x + a / x) / 2.0;
         }
         return x;
     }
