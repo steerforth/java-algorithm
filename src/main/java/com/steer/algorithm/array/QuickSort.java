@@ -43,6 +43,7 @@ public class QuickSort {
 
         //从左右两边交替扫描，直到left = right
         while (left < right) {
+            //!!!这里一定要加=号
             while (right > left && arr[right] >= key) {
                 //从右往左扫描，找到第一个比基准值小的元素
                 right--;
@@ -66,6 +67,6 @@ public class QuickSort {
         quickSort(arr, leftIndex, left - 1);
         //对基准值右边的元素进行递归排序。
         quickSort(arr, right + 1, rightIndex);
-
+        //其实这里left=right
     }
 }

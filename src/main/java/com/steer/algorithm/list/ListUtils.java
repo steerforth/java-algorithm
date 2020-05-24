@@ -6,7 +6,7 @@ public class ListUtils {
      * @param node
      */
     public static void printOnewayNode(OnewayNode node) {
-        System.out.print(node.value+"\t");
+        System.out.print(node.getValue()+"\t");
         if (node.getNextNode() !=null){
             printOnewayNode(node.getNextNode());
         }
