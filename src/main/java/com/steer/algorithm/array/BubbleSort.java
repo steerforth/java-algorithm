@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 冒泡排序
- * 时间复杂度O(n^2)
+ * 时间平均复杂度O(n^2),稳定
  */
 public class BubbleSort {
     /**

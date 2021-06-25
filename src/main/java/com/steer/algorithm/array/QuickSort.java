@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 /**
  * 快速排序, 是对冒泡排序的一种改进
- *
+ * 时间平均复杂度O(nlogn)
  * 双轴快排  Arrays.sort() 把序列分成三段
  */
 public class QuickSort {

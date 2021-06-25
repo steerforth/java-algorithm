@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 选择排序
- * 时间复杂度(O(n^2))
+ * 时间平均复杂度(O(n^2)),不稳定
  */
 public class SelectSort {
     /**
