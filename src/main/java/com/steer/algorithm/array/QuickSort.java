@@ -61,8 +61,9 @@ public class QuickSort {
             arr[right] = arr[left];
         }
         //4,6,10,99,5,16,44,96
-        //基准值归位
+        //基准值归位到新的left指针处
         arr[left] = key;
+        //第一次排序后： 原数组右边起第一个比基准值小的数, ...,基准值，....原数组左边起第一个比基准值小的数
         //对基准值左边的元素进行递归排序
         quickSort(arr, leftIndex, left - 1);
         //对基准值右边的元素进行递归排序。

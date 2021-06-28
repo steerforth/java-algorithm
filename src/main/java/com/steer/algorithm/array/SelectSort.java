@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class SelectSort {
     /**
-     * 从0索引开始，依次和后面元素比较，小的往前方，第一次完毕，最小值出现在最小索引处
+     * 从0索引开始，依次和后面元素比较，小的往前放，第一次完毕，最小值出现在最小索引处
      * @param args
      */
     public static void main(String[] args) {
