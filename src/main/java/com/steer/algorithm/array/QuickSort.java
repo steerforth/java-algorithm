@@ -27,47 +27,46 @@ public class QuickSort {
      *           \
      *  XXXXXXXX L XXXXXXXXX R XXXXX
      * @param arr
-     * @param leftIndex
-     * @param rightIndex
+     * @param l
+     * @param r
      */
-    private static void quickSort(int[] arr, int leftIndex, int rightIndex) {
-        log.info("{}  -- {}",leftIndex,rightIndex);
-        if (leftIndex >= rightIndex){
+    private static void quickSort(int[] arr, int l, int r) {
+        if (l >= r){
             return;
         }
 
-        int left = leftIndex;
-        int right = rightIndex;
+        int leftIndex = l;
+        int rightIndex = r;
         //作为基准
-        int key = arr[left];
+        int key = arr[leftIndex];
 
         //从左右两边交替扫描，直到left = right
-        while (left < right) {
+        while (leftIndex < rightIndex) {
             //!!!这里一定要加=号
-            while (right > left && arr[right] >= key) {
+            while (rightIndex > leftIndex && arr[rightIndex] >= key) {
                 //从右往左扫描，找到第一个比基准值小的元素
-                right--;
+                rightIndex--;
             }
 
             //找到这种元素将arr[right]放入arr[left]中
-            arr[left] = arr[right];
+            arr[leftIndex] = arr[rightIndex];
 
-            while (left < right && arr[left] <= key) {
+            while (leftIndex < rightIndex && arr[leftIndex] <= key) {
                 //从左往右扫描，找到第一个比基准值大的元素
-                left++;
+                leftIndex++;
             }
 
             //找到这种元素将arr[left]放入arr[right]中
-            arr[right] = arr[left];
+            arr[rightIndex] = arr[leftIndex];
         }
         //4,6,10,99,5,16,44,96
         //基准值归位到新的left指针处
-        arr[left] = key;
+        arr[leftIndex] = key;
         //第一次排序后： 原数组右边起第一个比基准值小的数, ...,基准值，....原数组左边起第一个比基准值小的数
         //对基准值左边的元素进行递归排序
-        quickSort(arr, leftIndex, left - 1);
+        quickSort(arr, l, leftIndex - 1);
         //对基准值右边的元素进行递归排序。
-        quickSort(arr, right + 1, rightIndex);
+        quickSort(arr, rightIndex + 1, r);
         //其实这里left=right
     }
 }
