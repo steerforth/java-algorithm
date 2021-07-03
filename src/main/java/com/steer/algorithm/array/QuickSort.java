@@ -43,7 +43,7 @@ public class QuickSort {
         //从左右两边交替扫描，直到left = right
         while (leftIndex < rightIndex) {
             //!!!这里一定要加=号
-            while (rightIndex > leftIndex && arr[rightIndex] >= key) {
+            while (leftIndex < rightIndex && arr[rightIndex] >= key) {
                 //从右往左扫描，找到第一个比基准值小的元素
                 rightIndex--;
             }
