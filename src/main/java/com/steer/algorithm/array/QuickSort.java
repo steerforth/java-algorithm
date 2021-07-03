@@ -40,7 +40,7 @@ public class QuickSort {
         //作为基准
         int key = arr[leftIndex];
 
-        //从左右两边交替扫描，直到left = right
+        //从左右两边交替扫描，直到leftIndex = rightIndex
         while (leftIndex < rightIndex) {
             //!!!这里一定要加=号
             while (leftIndex < rightIndex && arr[rightIndex] >= key) {
@@ -48,7 +48,7 @@ public class QuickSort {
                 rightIndex--;
             }
 
-            //找到这种元素将arr[right]放入arr[left]中
+            //找到这种元素将arr[rightIndex]放入arr[leftIndex]中
             arr[leftIndex] = arr[rightIndex];
 
             while (leftIndex < rightIndex && arr[leftIndex] <= key) {
@@ -56,17 +56,17 @@ public class QuickSort {
                 leftIndex++;
             }
 
-            //找到这种元素将arr[left]放入arr[right]中
+            //找到这种元素将arr[leftIndex]放入arr[rightIndex]中
             arr[rightIndex] = arr[leftIndex];
         }
+        //其实这里leftIndex=rightIndex
+//        System.out.println(leftIndex+"---"+rightIndex);
+
         //4,6,10,99,5,16,44,96
         //基准值归位到新的left指针处
         arr[leftIndex] = key;
 
-        //其实这里leftIndex=rightIndex
-//        System.out.println(leftIndex+"---"+rightIndex);
-
-        //第一次排序后： 原数组最右边起第一个比基准值小的数, ...,基准值，....原数组最左边起第一个比基准值小的数
+        //第一次排序后： 基准值左边的都是比基准值小的数，基准值右边的都是比基准值大的数
         //对基准值左边的元素进行递归排序
         quickSort(arr, l, leftIndex - 1);
         //**当前leftIndex至rightIndex都是比基准值key大的数
