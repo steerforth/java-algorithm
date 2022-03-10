@@ -37,7 +37,7 @@ public class QuickSort {
 
         int leftIndex = l;
         int rightIndex = r;
-        //作为基准
+        //作为基准; 比基准大的值放右边，比基准小的值放左边
         int key = arr[leftIndex];
 
         //从左右两边交替扫描，直到leftIndex = rightIndex
