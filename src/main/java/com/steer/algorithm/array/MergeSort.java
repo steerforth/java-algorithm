@@ -23,20 +23,20 @@ public class MergeSort {
         log.info("归并后结果:{}", Arrays.toString(arr));
     }
 
-    private static void mergeSort(int[] arr,int[] tempArr, int left, int right) {
+    private static void mergeSort(int[] arr,int[] tempArr, int leftPos, int rightPos) {
         if(null == arr) {
             return;
         }
 
-        if(left < right) {
+        if(leftPos < rightPos) {
             //找中间位置进行划分
-            int mid = (left+right)/2;
+            int midPos = (leftPos+rightPos)/2;
             //对左子序列进行递归归并排序
-            mergeSort(arr,tempArr, left, mid);
+            mergeSort(arr,tempArr, leftPos, midPos);
             //对右子序列进行递归归并排序
-            mergeSort(arr, tempArr,mid+1, right);
+            mergeSort(arr, tempArr,midPos+1, rightPos);
             //“合”。 进行归并
-            merge(arr,tempArr, left, mid, right);
+            merge(arr,tempArr, leftPos, midPos, rightPos);
         }
     }
 
@@ -49,7 +49,6 @@ public class MergeSort {
      * @param right 右半结束
      */
     private static void merge(int[] arr,int[] tempArr, int left, int mid, int right) {
-
         int leftStart = left;
         int rightStart = mid+1;
         int tempIndex = left;
