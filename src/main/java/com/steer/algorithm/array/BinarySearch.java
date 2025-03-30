@@ -6,7 +6,7 @@ package com.steer.algorithm.array;
  */
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = new int[]{4, 6, 5, 10, 16, 34, 44, 46, 96, 99, 398};
+        int[] arr = new int[]{4, 6, 5, 10, 16, 34, 44, 46, 96, 99, 100,398};
         int searchValue = 96;
         int index = binarySearch(arr, searchValue);
         System.out.println("搜索值"+searchValue+"在数组下标:"+index+"处");
@@ -16,7 +16,7 @@ public class BinarySearch {
         int max = arr.length;
         int min = 0;
         int mid =  min + ((max-min)>>1);
-
+        System.out.println(">>>"+mid);
         while (arr[mid] != searchValue){
             if (arr[mid] > searchValue){
                 max = mid -1;
@@ -29,6 +29,7 @@ public class BinarySearch {
             }
 
             mid = min + ((max-min)>>1);
+            System.out.println(">>>"+mid);
         }
 
         return mid;

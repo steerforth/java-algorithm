@@ -61,4 +61,28 @@ public class LeeCode92 {
         return onewayNode.getNextNode();
 
     }
+
+    @Test
+    public void test2(){
+        OnewayNode node = new OnewayNode(1);
+        node.addNextNode(2).addNextNode(3).addNextNode(4).addNextNode(5);
+        System.out.println("=======翻转前=========");
+        ListUtils.printOnewayNode(node);
+
+        //定义双指针
+        OnewayNode pre = null;
+        OnewayNode cur = node;
+        while (cur != null){
+            OnewayNode tmp = cur.getNextNode();
+            cur.setNextNode(pre);//指向从往后指改为往前指
+
+            pre = cur;//双指针整体后移一位
+            cur = tmp;
+
+        }
+
+
+        System.out.println("\n=======翻转后=========");
+        ListUtils.printOnewayNode(pre);
+    }
 }
