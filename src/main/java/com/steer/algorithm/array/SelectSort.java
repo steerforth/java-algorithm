@@ -13,13 +13,13 @@ public class SelectSort {
      */
     public static void main(String[] args) {
         int[] arr = new int[]{4,6,10,99,5,16,44,96,398,46,34};
-
-        for (int i = 0; i < arr.length-1; i++) {
-            for (int j = i; j < arr.length-1-i; j++) {
-                if (arr[j] > arr[j+1]){
-                    int temp = arr[j+1];
-                    arr[j+1] = arr[j];
-                    arr[j] = temp;
+//1,3,4
+        for (int i = 0; i < arr.length-1; i++) { //-1是外层循环次数少
+            for (int j = i+1; j < arr.length; j++) {
+                if (arr[i] > arr[j]){
+                    int temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
                 }
             }
         }
